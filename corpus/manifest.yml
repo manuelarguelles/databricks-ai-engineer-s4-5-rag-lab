@@ -1,0 +1,318 @@
+version: 1
+procedencia:
+  origen: notion
+  pagina: Tesis de selección asistida · Terry & Valdez
+  page_id: 3ba63102-b2a3-817b-878d-ea851a301a2b
+  extraido: 2026-08-15
+fuentes:
+- id: '00'
+  titulo: Signal or Noise? Evaluating Large Language Models in Resume Screening Across Contextual Variations
+    and Human Expert Benchmarks
+  eje: 1 · La búsqueda inicial de antecedentes
+  url: https://arxiv.org/abs/2507.08019
+  estado: incluida
+  pdf:
+    archivo: 00_https-arxiv-org-abs-2507-08019.pdf
+    sha256: f5324a60ba8f37645ea87c3268b7f5a884f70c47e05b9fbe3100db2754bdccb2
+    oa: unpaywall
+- id: doi-10.1145-3696457
+  titulo: 'Fairness and Bias in Algorithmic Hiring: A Multidisciplinary Survey'
+  eje: 1 · La búsqueda inicial de antecedentes
+  doi: 10.1145/3696457
+  url: https://doi.org/10.1145/3696457
+  estado: incluida
+  pdf:
+    archivo: 40_fairness-and-bias-in-algorithmic-hiring-survey.pdf
+    sha256: d31122bd74ed29b599237c8789f5b3f5abacf7638dd2f05631444e22814c4ccd
+    oa: recuperada-21ago
+- id: '02'
+  titulo: 'Ethics of AI-Enabled Recruiting and Selection: A Review and Research Agenda'
+  eje: 1 · La búsqueda inicial de antecedentes
+  doi: 10.1007/s10551-022-05049-6
+  url: https://doi.org/10.1007/s10551-022-05049-6
+  estado: incluida
+  pdf:
+    archivo: 02_ethics-of-ai-enabled-recruiting-and-selection-a-review-and-r.pdf
+    sha256: 5d41ff3b6f9c98b9fe74516db8f1e8139e00717c1d5528f5149ba3bbb40e9cbb
+    oa: unpaywall
+- id: '03'
+  titulo: 'AI Hiring with LLMs: A Context-Aware and Explainable Multi-Agent Framework for Resume Screening'
+  eje: 2 · Cómo se hace el filtrado con modelos de lenguaje
+  url: https://arxiv.org/abs/2504.02870
+  estado: incluida
+  pdf:
+    archivo: 03_https-arxiv-org-abs-2504-02870.pdf
+    sha256: 12af59d578bd17f59bb4ad9bcdea118f4d3d9bf15046bb801ca7246c9d23baaa
+    oa: unpaywall
+- id: doi-10.1109-ccwc67433.2026.11393696
+  titulo: 'LLM-Driven Resume Parsing and Job Description Matching: Evaluation on 998 Real Resumes'
+  eje: 2 · Cómo se hace el filtrado con modelos de lenguaje
+  doi: 10.1109/ccwc67433.2026.11393696
+  url: https://doi.org/10.1109/ccwc67433.2026.11393696
+  estado: sin-oa
+- id: '05'
+  titulo: 'Smart-Hiring: An Explainable end-to-end Pipeline for CV Information Extraction and Job Matching'
+  eje: 2 · Cómo se hace el filtrado con modelos de lenguaje
+  url: https://arxiv.org/abs/2511.02537
+  estado: incluida
+  pdf:
+    archivo: 05_https-arxiv-org-abs-2511-02537.pdf
+    sha256: ba3e46eb7c8567dd6c53ac2c2089424b10d09efe87396fe4916891b354493ab8
+    oa: unpaywall
+- id: doi-10.3390-electronics14040794
+  titulo: 'Resume2Vec: Transforming Applicant Tracking Systems with Intelligent Resume Embeddings for'
+  eje: 2 · Cómo se hace el filtrado con modelos de lenguaje
+  doi: 10.3390/electronics14040794
+  url: https://doi.org/10.3390/electronics14040794
+  estado: incluida
+  pdf:
+    archivo: 36_resume2vec-transforming-applicant-tracking-systems.pdf
+    sha256: ef185daf8e508d4f401187fdda18001436b552edb920819d5bcff68b3c135496
+    oa: recuperada-21ago
+- id: doi-10.3390-electronics14142787
+  titulo: Explainable Use of Foundation Models for Job Hiring
+  eje: 2 · Cómo se hace el filtrado con modelos de lenguaje
+  doi: 10.3390/electronics14142787
+  url: https://doi.org/10.3390/electronics14142787
+  estado: incluida
+  pdf:
+    archivo: 37_explainable-use-of-foundation-models-for-job-hiring.pdf
+    sha256: e9bdc2e95430ad49a9a881b17753bf021dbded74eddee2cbd44d55177b78b6df
+    oa: recuperada-21ago
+- id: 08
+  titulo: 'Application of LLM Agents in Recruitment: A Novel Framework for Resume Screening'
+  eje: 2 · Cómo se hace el filtrado con modelos de lenguaje
+  url: https://arxiv.org/abs/2401.08315
+  estado: incluida
+  pdf:
+    archivo: 08_https-arxiv-org-abs-2401-08315.pdf
+    sha256: 88778e55dd7f07591dd70d9281008345f53e8b20c320af74c5e9da04e274a51a
+    oa: unpaywall
+- id: doi-10.1177-001979390105400403
+  titulo: An Experimental Study of Job Evaluation and Comparable Worth
+  eje: 3 · Valuación de puestos y la metodología Mercer
+  doi: 10.1177/001979390105400403
+  url: https://doi.org/10.1177/001979390105400403
+  estado: sin-oa
+- id: doi-10.1111-j.1744-6570.2010.01207.x
+  titulo: 'DOING COMPETENCIES WELL: BEST PRACTICES IN COMPETENCY MODELING'
+  eje: 3 · Valuación de puestos y la metodología Mercer
+  doi: 10.1111/j.1744-6570.2010.01207.x
+  url: https://doi.org/10.1111/j.1744-6570.2010.01207.x
+  estado: incluida
+  pdf:
+    archivo: 43_doing-competencies-well.pdf
+    sha256: 6c150a1fae5306053571906bb06ced26751826f922a7d8b2a50565e63edefeeb
+    oa: web-abierta-21ago
+- id: doi-10.1016-j.hrmr.2008.10.002
+  titulo: What is (or should be) the difference between competency modeling and traditional job anal
+  eje: 3 · Valuación de puestos y la metodología Mercer
+  doi: 10.1016/j.hrmr.2008.10.002
+  url: https://doi.org/10.1016/j.hrmr.2008.10.002
+  estado: incluida
+  pdf:
+    archivo: 46_difference-competency-modeling-vs-job-analysis.pdf
+    sha256: 69f475b65652731c211ca1d74d8b616df43dbcb85bd423fd1d3348f50b6e7134
+    oa: web-abierta-21ago
+- id: doi-10.1146-annurev-psych-120710-100401
+  titulo: The Rise and Fall of Job Analysis and the Future of Work Analysis
+  eje: 3 · Valuación de puestos y la metodología Mercer
+  doi: 10.1146/annurev-psych-120710-100401
+  url: https://doi.org/10.1146/annurev-psych-120710-100401
+  estado: sin-oa
+- id: doi-10.1037-0021-9010.88.4.635
+  titulo: A meta-analysis of job analysis reliability.
+  eje: 3 · Valuación de puestos y la metodología Mercer
+  doi: 10.1037/0021-9010.88.4.635
+  url: https://doi.org/10.1037/0021-9010.88.4.635
+  estado: incluida
+  pdf:
+    archivo: 41_meta-analysis-of-job-analysis-reliability.pdf
+    sha256: afa90dc8652d2c2aeb6badbf80a0b99b27a26d3ff54c9e5a29089e2f5bc675b7
+    oa: web-abierta-21ago
+- id: doi-10.1037-0021-9010.82.5.627
+  titulo: Social and cognitive sources of potential inaccuracy in job analysis.
+  eje: 3 · Valuación de puestos y la metodología Mercer
+  doi: 10.1037/0021-9010.82.5.627
+  url: https://doi.org/10.1037/0021-9010.82.5.627
+  estado: incluida
+  pdf:
+    archivo: 42_social-and-cognitive-sources-of-inaccuracy.pdf
+    sha256: c3988fd76490b9968cc3672aa3b10713debde9af520c146172e833da9fbd0d3a
+    oa: web-abierta-21ago
+- id: url-de92f8de
+  titulo: https://www.mercer.com/solutions/talent-and-rewards/job-architecture/job-evaluation-ipe/
+  eje: 3 · Valuación de puestos y la metodología Mercer
+  url: https://www.mercer.com/solutions/talent-and-rewards/job-architecture/job-evaluation-ipe/
+  estado: sin-oa
+- id: url-869f2e53
+  titulo: https://www.kornferry.com/content/dam/kornferry/docs/pdfs/job-evaluation.pdf
+  eje: 3 · Valuación de puestos y la metodología Mercer
+  url: https://www.kornferry.com/content/dam/kornferry/docs/pdfs/job-evaluation.pdf
+  estado: incluida
+  pdf:
+    archivo: 39_korn-ferry-job-evaluation.pdf
+    sha256: 6e2d74f8ff5ddfb9106c01d0ed271df14f4d434a6dc9c3a7f4868f213b59d8f5
+    oa: recuperada-21ago
+- id: '17'
+  titulo: 'RAGAs: Automated Evaluation of Retrieval Augmented Generation'
+  eje: 4 · RAGAS, las métricas y el juez automático
+  doi: 10.18653/v1/2024.eacl-demo.16
+  url: https://doi.org/10.18653/v1/2024.eacl-demo.16
+  estado: incluida
+  pdf:
+    archivo: 17_ragas-automated-evaluation-of-retrieval-augmented-generation.pdf
+    sha256: e2038b8cff7574bf5302e1ceb6bfbac6d2471c352073b27f21460910936febce
+    oa: unpaywall
+- id: url-19e613de
+  titulo: https://proceedings.neurips.cc/paper_files/paper/2024/hash/27245589131d17368cccdfa990cbf16e-Abstract-Datasets_and_Benchmarks_Track.html
+  eje: 4 · RAGAS, las métricas y el juez automático
+  url: https://proceedings.neurips.cc/paper_files/paper/2024/hash/27245589131d17368cccdfa990cbf16e-Abstract-Datasets_and_Benchmarks_Track.html
+  estado: sin-oa
+- id: '19'
+  titulo: 'ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems'
+  eje: 4 · RAGAS, las métricas y el juez automático
+  doi: 10.18653/v1/2024.naacl-long.20
+  url: https://doi.org/10.18653/v1/2024.naacl-long.20
+  estado: incluida
+  pdf:
+    archivo: 19_ares-an-automated-evaluation-framework-for-retrieval-augment.pdf
+    sha256: 5a585d88f7b63c06439a4ecb8fd3165615d637e2061f242bff3f6ec3a209bd34
+    oa: unpaywall
+- id: '20'
+  titulo: Retrieval Augmented Generation or Long-Context LLMs? A Comprehensive Study and Hybrid Appr
+  eje: 4 · RAGAS, las métricas y el juez automático
+  doi: 10.18653/v1/2024.emnlp-industry.66
+  url: https://doi.org/10.18653/v1/2024.emnlp-industry.66
+  estado: incluida
+  pdf:
+    archivo: 20_retrieval-augmented-generation-or-long-context-llms-a-compre.pdf
+    sha256: 90407fd3c2bcf11d52868f0aaee3d39d6a9919351c89636555a641950531a070
+    oa: unpaywall
+- id: url-c3776dc2
+  titulo: https://icml.cc/virtual/2025/poster/46069
+  eje: 4 · RAGAS, las métricas y el juez automático
+  url: https://icml.cc/virtual/2025/poster/46069
+  estado: sin-oa
+- id: '22'
+  titulo: 'Evaluating RAG Metrics in Applied Contexts: An Experiment, Its Findings and Its Limitations'
+  eje: 4 · RAGAS, las métricas y el juez automático
+  url: https://arxiv.org/abs/2607.07302
+  estado: incluida
+  pdf:
+    archivo: 22_https-arxiv-org-abs-2607-07302.pdf
+    sha256: e984f158f1f1c46e879b63329d9ed29575107367280d16d5bbf0d2cc26746d11
+    oa: unpaywall
+- id: url-f9a91ea0
+  titulo: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/
+  eje: 4 · RAGAS, las métricas y el juez automático
+  url: https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/
+  estado: sin-oa
+- id: '24'
+  titulo: Gender, Race, and Intersectional Bias in Resume Screening via Language Model Retrieval
+  eje: 5 · Sesgo y equidad
+  doi: 10.1609/aies.v7i1.31748
+  url: https://doi.org/10.1609/aies.v7i1.31748
+  estado: incluida
+  pdf:
+    archivo: 24_gender-race-and-intersectional-bias-in-resume-screening-via.pdf
+    sha256: bad5e03f0804556068dc37346b258d4571ccd09f896b099b92d4e5c6314096da
+    oa: unpaywall
+- id: '25'
+  titulo: Can LLMs Hire Fairly? Racial Bias in Resume Screening
+  eje: 5 · Sesgo y equidad
+  url: https://arxiv.org/abs/2606.28978
+  estado: incluida
+  pdf:
+    archivo: 25_https-arxiv-org-abs-2606-28978.pdf
+    sha256: face271be6eb735efaf4326023413c42b6eb49b640006bd8898faf186490c596
+    oa: unpaywall
+- id: '26'
+  titulo: Gendered Language in Resumes and its Implications for Algorithmic Bias in Hiring
+  eje: 5 · Sesgo y equidad
+  doi: 10.18653/v1/2022.gebnlp-1.7
+  url: https://doi.org/10.18653/v1/2022.gebnlp-1.7
+  estado: excluida
+  motivo: 1 página / 1.500 chars — es el abstract publicado, no el paper completo
+  pdf:
+    archivo: 26_gendered-language-in-resumes-and-its-implications-for-algori.pdf
+    sha256: 6207c8af7c50cddee0932a1e6e2a84c8922ea4b110a02e83f0eb89d5a80b5063
+- id: '27'
+  titulo: 'Discriminated by an algorithm: a systematic review of discrimination and fairness by algor'
+  eje: 5 · Sesgo y equidad
+  doi: 10.1007/s40685-020-00134-w
+  url: https://doi.org/10.1007/s40685-020-00134-w
+  estado: incluida
+  pdf:
+    archivo: 27_discriminated-by-an-algorithm-a-systematic-review-of-discrim.pdf
+    sha256: 593920316aed32e478492cec5e9aa72b095c058aeca85006f6dc95e9b55764b1
+    oa: unpaywall
+- id: doi-10.1145-3603195.3603203
+  titulo: 'Mitigating Bias in Algorithmic Hiring: Evaluating Claims and Practices'
+  eje: 5 · Sesgo y equidad
+  doi: 10.1145/3603195.3603203
+  url: https://doi.org/10.1145/3603195.3603203
+  estado: incluida
+  pdf:
+    archivo: 45_mitigating-bias-in-algorithmic-hiring.pdf
+    sha256: 6b31713134d2a18595551d031e229ffca4cedb8e6585056cc4f83ffcd56addd1
+    oa: web-abierta-21ago
+- id: doi-10.1111-j.1468-2389.1993.tb00080.x
+  titulo: 'The Validity of the Employment Interview: A Meta‐Analysis'
+  eje: 6 · Que el criterio estructurado gana al juicio libre
+  doi: 10.1111/j.1468-2389.1993.tb00080.x
+  url: https://doi.org/10.1111/j.1468-2389.1993.tb00080.x
+  estado: sin-oa
+- id: doi-10.1080-1359432x.2019.1681401
+  titulo: 'Personnel selection in the digital age: a review of validity and applicant reactions, and'
+  eje: 6 · Que el criterio estructurado gana al juicio libre
+  doi: 10.1080/1359432x.2019.1681401
+  url: https://doi.org/10.1080/1359432x.2019.1681401
+  estado: sin-oa
+- id: doi-10.1037-apl0000994
+  titulo: 'Revisiting meta-analytic estimates of validity in personnel selection: Addressing systemat'
+  eje: 6 · Que el criterio estructurado gana al juicio libre
+  doi: 10.1037/apl0000994
+  url: https://doi.org/10.1037/apl0000994
+  estado: incluida
+  pdf:
+    archivo: 44_revisiting-meta-analytic-estimates-of-validity.pdf
+    sha256: dcbd82d6fb79fa3516651e84d1a9edf957f6bef963fb5dac5658327a03a61cbd
+    oa: web-abierta-21ago
+- id: doi-10.2139-ssrn.5958495
+  titulo: '&amp;nbsp;Adversarial Verification as Reference Architecture for EU AI Act Article 14 Comp'
+  eje: 7 · Cumplimiento y gobernanza
+  doi: 10.2139/ssrn.5958495
+  url: https://doi.org/10.2139/ssrn.5958495
+  estado: sin-oa
+- id: doi-10.2139-ssrn.5703842
+  titulo: 'Auditing Effects on Employment Hiring: Evidence from the New York City Algorithmic Bias Au'
+  eje: 7 · Cumplimiento y gobernanza
+  doi: 10.2139/ssrn.5703842
+  url: https://doi.org/10.2139/ssrn.5703842
+  estado: sin-oa
+- id: doi-10.1145-3461702.3462531
+  titulo: Algorithmic Hiring in Practice
+  eje: 7 · Cumplimiento y gobernanza
+  doi: 10.1145/3461702.3462531
+  url: https://doi.org/10.1145/3461702.3462531
+  estado: incluida
+  pdf:
+    archivo: 38_algorithmic-hiring-in-practice.pdf
+    sha256: 954d005d9e1eea64709ab6b9077fda172ee62b0c5f55cd7af88bca7bd2f6cfaf
+    oa: recuperada-21ago
+- id: '35'
+  titulo: 'AI Security Beyond Core Domains: Resume Screening as a Case Study of Adversarial Vulnerabilities
+    in Specialized LLM Applications'
+  eje: 8 · El currículum adversarial
+  url: https://arxiv.org/abs/2512.20164
+  estado: incluida
+  pdf:
+    archivo: 35_https-arxiv-org-abs-2512-20164.pdf
+    sha256: 9ec7ff00498ed2b5c85599f2e6d57348c423c5f87a43b205db2e7b455aca19d4
+    oa: unpaywall
+- id: url-0dfb730c
+  titulo: gob.pe
+  eje: 9 · Lo que medimos nosotros
+  url: http://gob.pe/
+  estado: sin-oa

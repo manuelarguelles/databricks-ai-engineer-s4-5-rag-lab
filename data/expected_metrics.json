@@ -1,0 +1,25 @@
+{
+  "corpus_version": "s4.5-24docs-2026-08-26",
+  "documents": 24,
+  "base_documents": 13,
+  "distractor_documents": 11,
+  "chunks": 1405,
+  "questions": 70,
+  "k": 8,
+  "extractor": "pymupdf-bloques@1.27.2.3",
+  "normalization": "b-media@2",
+  "chunk_contract": 1,
+  "embedding_model": "cohere.embed-multilingual-v3",
+  "query_language": "es",
+  "retrieval_language": "en",
+  "hits": {
+    "dense": 36,
+    "bm25": 53,
+    "rrf": 51,
+    "rrf_listwise": 58
+  },
+  "source_repository": "manuelarguelles/agente-research-citas",
+  "source_commit": "f22f8565b008d318c85cc68b2df3955c4a23742f",
+  "notes": "El reranker listwise se midió en calibración y validación con partición determinista; 34/37 + 24/33 = 58/70."
+}
+

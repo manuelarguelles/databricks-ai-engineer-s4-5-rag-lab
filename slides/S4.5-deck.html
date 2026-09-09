@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Laboratorio S4.5 · RAG bajo ruido</title>
+  <style>
+    :root{--violet:#533afd;--lilac:#9d91ff;--cyan:#31c6d4;--navy:#0d253d;--ink:#102a43;--mut:#60758a;--line:#dce5ed;--soft:#f5f8fb;--ok:#0b9b69;--warn:#d97706;--bad:#dc3f55;--font:Inter,"SF Pro Display",system-ui,sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}body{overflow:hidden;background:#151946;color:var(--ink);font-family:var(--font)}
+    .slide{position:fixed;inset:0;display:none;flex-direction:column;justify-content:center;padding:6vh 6.5vw 9vh;background:white;overflow:hidden}.slide.on{display:flex}.dark{color:white;background:var(--navy)}
+    .mesh:before{content:"";position:absolute;inset:-35% -15% 20%;background:radial-gradient(circle at 20% 45%,#533afda8,transparent 42%),radial-gradient(circle at 78% 24%,#31c6d455,transparent 39%);filter:blur(14px)}.slide>*{position:relative}
+    .ey{margin-bottom:18px;color:var(--mut);font-size:12px;font-weight:750;letter-spacing:.15em;text-transform:uppercase}.dark .ey{color:var(--lilac)}
+    h1{max-width:16ch;font-size:clamp(44px,6vw,78px);font-weight:300;letter-spacing:-2px;line-height:1.01}h2{max-width:24ch;font-size:clamp(31px,4vw,52px);font-weight:300;letter-spacing:-1px;line-height:1.06}h3{font-size:clamp(17px,1.6vw,22px);font-weight:620;line-height:1.25}
+    strong,.accent{color:var(--violet)}.dark strong,.dark .accent{color:var(--lilac)}.lead{max-width:65ch;margin-top:23px;color:#3d556c;font-size:clamp(17px,1.7vw,23px);font-weight:300;line-height:1.45}.dark .lead{color:#cad6e2}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-top:30px}.grid.two{grid-template-columns:repeat(2,1fr)}.grid.four{grid-template-columns:repeat(4,1fr)}
+    .card{min-height:125px;padding:20px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}.dark .card{border-color:#ffffff24;background:#ffffff0e}.card b{display:block;margin-bottom:10px;color:var(--violet);font-size:12px;letter-spacing:.08em;text-transform:uppercase}.dark .card b{color:var(--lilac)}.card p,.card li{color:#405970;font-size:clamp(13px,1.25vw,17px);font-weight:300;line-height:1.43}.dark .card p,.dark .card li{color:#cad6e2}
+    .flow{display:flex;align-items:stretch;gap:9px;margin-top:32px}.node{flex:1;min-height:105px;padding:17px;border:1px solid var(--line);border-radius:11px;background:var(--soft)}.dark .node{border-color:#ffffff24;background:#ffffff0e}.node b{color:var(--violet);font-size:13px}.dark .node b{color:var(--lilac)}.node p{margin-top:8px;color:#526b80;font-size:13px;line-height:1.4}.dark .node p{color:#bfd0de}.arrow{align-self:center;color:var(--violet);font-size:25px}
+    table{width:100%;margin-top:27px;border-collapse:collapse;font-size:clamp(12px,1.15vw,16px)}th{padding:10px 12px;border-bottom:2px solid var(--line);color:var(--mut);font-size:11px;letter-spacing:.08em;text-align:left;text-transform:uppercase}td{padding:11px 12px;border-bottom:1px solid var(--line);line-height:1.35}.dark th{border-color:#ffffff2e;color:var(--lilac)}.dark td{border-color:#ffffff1c;color:#d8e2eb}
+    .metric{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:30px}.bars{display:flex;flex-direction:column;gap:13px}.bar{display:grid;grid-template-columns:95px 1fr 65px;gap:12px;align-items:center;font-size:14px}.track{height:11px;border-radius:99px;background:#e7edf3;overflow:hidden}.dark .track{background:#ffffff1f}.fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--violet),var(--cyan))}
+    .quote{max-width:34ch;margin-top:26px;padding:7px 0 7px 21px;border-left:3px solid var(--violet);font-size:clamp(21px,2.5vw,34px);font-weight:300;line-height:1.3}.note{max-width:88ch;margin-top:19px;padding-left:13px;border-left:2px solid var(--line);color:var(--mut);font-size:13px;line-height:1.45}.dark .note{border-color:#ffffff2d;color:#aebfce}
+    .check{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin-top:29px}.gate{padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--soft)}.gate b{display:block;color:var(--ok);font-size:13px}.gate span{display:block;margin-top:6px;color:#526b80;font-size:12px;line-height:1.35}
+    .activity{margin-top:28px;padding:24px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(135deg,var(--soft),#fff)}.activity ol{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;list-style:none;counter-reset:step}.activity li{counter-increment:step;color:#466076;font-size:14px;line-height:1.42}.activity li:before{display:block;margin-bottom:8px;color:var(--violet);content:counter(step,decimal-leading-zero);font-size:23px;font-weight:300}
+    .pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}.pill{padding:8px 12px;border:1px solid var(--line);border-radius:99px;background:var(--soft);color:#415a70;font-size:13px}.dark .pill{border-color:#ffffff29;background:#ffffff0e;color:#dce5ee}
+    .foot{position:absolute;right:6.5vw;bottom:3.6vh;left:6.5vw;display:flex;justify-content:space-between;color:var(--mut);font-size:11px}.dark .foot{color:#879bad}#controls{position:fixed;right:20px;bottom:28px;z-index:20;display:flex;gap:6px;opacity:.35}#controls:hover{opacity:1}button{width:34px;height:30px;border:1px solid #a7b4c0;border-radius:7px;background:#fffffff0;color:#334c62;cursor:pointer}#bar{position:fixed;bottom:0;left:0;z-index:21;height:3px;background:var(--violet);transition:width .2s}#num{position:fixed;right:24px;bottom:9px;z-index:21;color:#8393a3;font-size:11px}.notes{display:none}
+    @media(max-width:900px){.slide{overflow:auto}.grid,.grid.two,.grid.four,.metric{grid-template-columns:1fr}.flow{display:grid;grid-template-columns:1fr 1fr}.arrow{display:none}.check{grid-template-columns:1fr 1fr}.activity ol{grid-template-columns:1fr 1fr}}@media print{body{overflow:visible}.slide{position:relative;display:flex;height:100vh;page-break-after:always}#controls,#bar,#num{display:none}}
+  </style>
+</head>
+<body>
+  <section class="slide dark mesh on">
+    <p class="ey">Databricks AI Engineer · laboratorio independiente entre S04 y S05</p>
+    <h1>RAG bajo ruido:<br><strong>evidencia o intuición</strong></h1>
+    <p class="lead">24 documentos reales · 1.405 chunks congelados · 70 preguntas · un resultado que se puede auditar.</p>
+    <div class="pills"><span class="pill">Laboratorio S4.5</span><span class="pill">3 horas</span><span class="pill">Notebook ejecutable</span></div>
+    <aside class="notes">Abre preguntando: ¿un RAG mejora automáticamente si agregamos documentos? No reveles aún las métricas.</aside>
+  </section>
+
+  <section class="slide">
+    <p class="ey">Promesa de la sesión</p><h2>Hoy no construiremos un chatbot bonito</h2>
+    <div class="grid four">
+      <div class="card"><b>Corpus</b><p>Verificar 24 PDF por manifiesto y SHA-256.</p></div>
+      <div class="card"><b>Retrieval</b><p>Comparar dense, BM25 y RRF con el mismo k.</p></div>
+      <div class="card"><b>Evaluación</b><p>Exigir el span correcto, no solo el paper correcto.</p></div>
+      <div class="card"><b>Decisión</b><p>Citar por offset o abstenerse.</p></div>
+    </div>
+    <p class="quote">Una respuesta plausible no es una respuesta trazable.</p>
+  </section>
+
+  <section class="slide dark">
+    <p class="ey">Mapa de la clase</p><h2>Cuatro bloques, una sola cadena de evidencia</h2>
+    <div class="flow">
+      <div class="node"><b>01 · Contrato</b><p>PDF, hash, procedencia, 13 + 11.</p></div><span class="arrow">→</span>
+      <div class="node"><b>02 · Unidad</b><p>Parsing, chunks, CDF y gold set.</p></div><span class="arrow">→</span>
+      <div class="node"><b>03 · Ranking</b><p>Dense, BM25 y RRF sobre k=8.</p></div><span class="arrow">→</span>
+      <div class="node"><b>04 · Confianza</b><p>Reranking, cita y abstención.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <p class="ey">Gate 01–02 · corpus</p><h2>Primero congelamos lo que significa “los documentos”</h2>
+    <div class="grid">
+      <div class="card"><b>13 base</b><p>Documentos a los que apuntan las 70 evidencias del gold set.</p></div>
+      <div class="card"><b>11 distractores</b><p>Documentos plausibles, pero sin preguntas propias en esta versión del gold set.</p></div>
+      <div class="card"><b>24 hashes</b><p>Si cambia un byte, la corrida ya no pertenece al mismo experimento.</p></div>
+    </div>
+    <p class="note">“Distractor” describe su papel en este benchmark; no significa que el documento sea inútil.</p>
+  </section>
+
+  <section class="slide dark">
+    <p class="ey">Gate 03–04 · dos rutas</p><h2>Aprender el producto y reproducir el experimento son tareas distintas</h2>
+    <table>
+      <thead><tr><th>Ruta</th><th>Para qué sirve</th><th>Qué reportamos</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Administrada</strong></td><td><code>ai_parse_document → ai_prep_search</code></td><td>24 fuentes y chunks observados</td></tr>
+        <tr><td><strong>Congelada</strong></td><td>Extractor, chunker y embeddings versionados</td><td>1.405 chunks y hits/70 exactos</td></tr>
+      </tbody>
+    </table>
+    <p class="quote">No mezcles métricas de unidades experimentales distintas.</p>
+  </section>
+
+  <section class="slide">
+    <p class="ey">Ruta administrada · SQL</p><h2>Databricks extrae estructura y prepara unidades de búsqueda</h2>
+    <div class="flow">
+      <div class="node"><b>read_files</b><p>Lee los binarios del UC Volume.</p></div><span class="arrow">→</span>
+      <div class="node"><b>ai_parse_document</b><p>Convierte PDF en contenido estructurado.</p></div><span class="arrow">→</span>
+      <div class="node"><b>ai_prep_search</b><p>Fragmenta preservando metadata.</p></div><span class="arrow">→</span>
+      <div class="node"><b>Delta + CDF</b><p>Deja una base incremental gobernada.</p></div>
+    </div>
+    <p class="note">El notebook valida 24 fuentes distintas y más de 24 chunks. El conteo exacto depende de la implementación administrada.</p>
+  </section>
+
+  <section class="slide dark">
+    <p class="ey">Ruta congelada · contrato</p><h2>El número 1.405 tiene apellido</h2>
+    <div class="grid">
+      <div class="card"><b>Extractor</b><p>PyMuPDF bloques 1.27.2.3.</p></div>
+      <div class="card"><b>Normalización</b><p>b-media@2 y fronteras versionadas.</p></div>
+      <div class="card"><b>Chunk contract</b><p>Versión 1, con offsets verificables.</p></div>
+    </div>
+    <p class="quote">Cambiar chunking cambia la pregunta que responde el benchmark.</p>
+  </section>
+
+  <section class="slide">
+    <p class="ey">Gate 05 · gold set</p><h2>Setenta preguntas; setenta spans que deben existir</h2>
+    <div class="grid two">
+      <div class="card"><b>Prueba positiva</b><p>El texto entre <code>char_start</code> y <code>char_end</code> coincide literalmente con la evidencia.</p></div>
+      <div class="card"><b>Prueba anti-eco</b><p>La pregunta no contiene por accidente la respuesta o una copia trivial del span.</p></div>
+    </div>
+    <div class="activity"><ol><li>Elige una pregunta.</li><li>Ubica documento y página.</li><li>Verifica offset literal.</li><li>Rechaza si no coincide.</li></ol></div>
+  </section>
+
+  <section class="slide dark">
+    <p class="ey">Tres carriles</p><h2>Buscan relevancia, pero no usan la misma señal</h2>
+    <div class="grid">
+      <div class="card"><b>Dense</b><p>Cercanía semántica entre embeddings.</p></div>
+      <div class="card"><b>BM25</b><p>Términos distintivos y frecuencia normalizada.</p></div>
+      <div class="card"><b>RRF</b><p>Combina posiciones, no scores incompatibles.</p></div>
+    </div>
+    <p class="note">Cosine, BM25 y RRF no comparten escala. Comparamos hits/70 y MRR, nunca el score crudo.</p>
+  </section>
+
+  <section class="slide">
+    <p class="ey">Actividad · predicción antes del resultado</p><h2>¿Qué carril resistirá mejor once distractores?</h2>
+    <div class="activity"><ol><li>Elige dense, BM25 o RRF.</li><li>Escribe una razón verificable.</li><li>Predice el orden, no el score.</li><li>Contrasta con hits/70.</li></ol></div>
+    <p class="quote">Más documentos pueden aumentar cobertura y también aumentar competencia.</p>
+  </section>
+
+  <section class="slide dark">
+    <p class="ey">Gate 06 · benchmark observado</p><h2>BM25 sostuvo la señal; dense perdió seis aciertos</h2>
+    <div class="metric">
+      <div class="bars">
+        <div class="bar"><span>Dense</span><div class="track"><div class="fill" style="width:51.4%"></div></div><strong>36/70</strong></div>
+        <div class="bar"><span>BM25</span><div class="track"><div class="fill" style="width:75.7%"></div></div><strong>53/70</strong></div>
+        <div class="bar"><span>RRF</span><div class="track"><div class="fill" style="width:72.9%"></div></div><strong>51/70</strong></div>
+      </div>
+      <div class="card"><b>Lectura</b><p>Los distractores compiten semánticamente con dense. Los términos raros preservan la ventaja léxica. Fusionar dos carriles no garantiza superar al mejor.</p></div>
+    </div>
+    <p class="note">Comparación contextual: con 13 documentos, dense 42, BM25 53 y RRF 53. La métrica oficial de S4.5 usa 24.</p>
+  </section>
+
+  <section class="slide">
+    <p class="ey">Gate 07 · reranking</p><h2>Recuperar 20 y reordenar 8 elevó el resultado a 58/70</h2>
+    <div class="grid">
+      <div class="card"><b>Calibración</b><p>34/37. Sirve para elegir el candidato.</p></div>
+      <div class="card"><b>Validación</b><p>24/33. Sirve para estimar generalización.</p></div>
+      <div class="card"><b>Total medido</b><p><strong>58/70</strong>, modelo y partición versionados.</p></div>
+    </div>
+    <p class="note">Es evidencia de una corrida probabilística documentada, no una promesa de que cada repetición dará exactamente el mismo orden.</p>
+  </section>
+
+  <section class="slide dark">
+    <p class="ey">Guardrail</p><h2>El modelo propone; el código verifica</h2>
+    <div class="flow">
+      <div class="node"><b>Recuperar</b><p>Top-k con doc_id y offsets.</p></div><span class="arrow">→</span>
+      <div class="node"><b>Proponer</b><p>El modelo selecciona evidencia.</p></div><span class="arrow">→</span>
+      <div class="node"><b>Verificar</b><p>El span existe en el documento.</p></div><span class="arrow">→</span>
+      <div class="node"><b>Decidir</b><p>Citar o abstenerse.</p></div>
+    </div>
+    <p class="quote">“No hay evidencia suficiente” también es una salida correcta.</p>
+  </section>
+
+  <section class="slide">
+    <p class="ey">Gate 08 · operación</p><h2>Diagnostica por capa; no parchees la métrica</h2>
+    <table>
+      <thead><tr><th>Síntoma</th><th>Capa</th><th>Acción</th></tr></thead>
+      <tbody>
+        <tr><td>Menos de 24 PDF</td><td>Carga</td><td>Reejecutar despliegue idempotente.</td></tr>
+        <tr><td>Hash distinto</td><td>Corpus</td><td>Restaurar; no continuar.</td></tr>
+        <tr><td>Función AI ausente</td><td>Región/runtime</td><td>Declarar contingencia y usar ruta congelada.</td></tr>
+        <tr><td>Métrica distinta</td><td>Contrato</td><td>Comparar corpus, extractor, embedding y k.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="slide dark">
+    <p class="ey">Gates 09–10 · terminado real</p><h2>El handoff existe solo después de una corrida verde</h2>
+    <div class="check">
+      <div class="gate"><b>G01</b><span>24 hashes</span></div><div class="gate"><b>G02</b><span>13 + 11</span></div><div class="gate"><b>G03</b><span>carga automática</span></div><div class="gate"><b>G04</b><span>notebook único</span></div><div class="gate"><b>G05</b><span>70 preguntas</span></div>
+      <div class="gate"><b>G06</b><span>36 / 53 / 51</span></div><div class="gate"><b>G07</b><span>listwise 58</span></div><div class="gate"><b>G08</b><span>guías y fallos</span></div><div class="gate"><b>G09</b><span>Databricks SUCCESS</span></div><div class="gate"><b>G10</b><span>handoff Daniel</span></div>
+    </div>
+    <p class="quote">No es “corrió una vez”. Es 10/10 con evidencia.</p>
+  </section>
+
+  <section class="slide">
+    <p class="ey">Quiz de cierre</p><h2>Si puedes responder esto, puedes defender el experimento</h2>
+    <div class="grid two">
+      <div class="card"><b>01</b><p>¿Por qué los 11 documentos solo pueden restar en este gold set?</p></div>
+      <div class="card"><b>02</b><p>¿Por qué BM25 resistió mejor que dense?</p></div>
+      <div class="card"><b>03</b><p>¿Qué invalida la comparación entre dos corridas?</p></div>
+      <div class="card"><b>04</b><p>¿Por qué una cita requiere offsets aunque “suene correcta”?</p></div>
+    </div>
+  </section>
+
+  <section class="slide dark mesh">
+    <p class="ey">Puente a S05</p><h2>El retriever deja de ser una demo y se convierte en una <strong>tool gobernada</strong></h2>
+    <p class="lead">El agente podrá decidir cuándo buscar. No podrá decidir qué cuenta como evidencia válida.</p>
+    <div class="pills"><span class="pill">Corpus versionado</span><span class="pill">Evaluación separada</span><span class="pill">Cita verificable</span><span class="pill">Abstención</span></div>
+  </section>
+
+  <div id="controls"><button id="prev" aria-label="Anterior">←</button><button id="next" aria-label="Siguiente">→</button></div><div id="bar"></div><div id="num"></div>
+  <script>
+    const slides=[...document.querySelectorAll('.slide')];let i=0;
+    function show(n){i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,j)=>s.classList.toggle('on',j===i));document.querySelector('#bar').style.width=`${(i+1)/slides.length*100}%`;document.querySelector('#num').textContent=`${i+1} / ${slides.length}`;history.replaceState(null,'',`#${i+1}`)}
+    document.querySelector('#prev').onclick=()=>show(i-1);document.querySelector('#next').onclick=()=>show(i+1);
+    addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))show(i+1);if(['ArrowLeft','PageUp'].includes(e.key))show(i-1);if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+    show(Math.max(0,(parseInt(location.hash.slice(1))||1)-1));
+  </script>
+</body>
+</html>

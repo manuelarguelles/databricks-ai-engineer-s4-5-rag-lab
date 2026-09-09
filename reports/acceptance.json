@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "passed": 10,
+  "total": 10,
+  "profile": "webinar-aws-v2",
+  "catalog": "neptuno_manuel_arguelles",
+  "gates": [
+    {
+      "gate": "G01_CORPUS",
+      "status": "PASS",
+      "detail": "24/24 PDF presentes y hashes válidos"
+    },
+    {
+      "gate": "G02_CLASIFICACION",
+      "status": "PASS",
+      "detail": "13 base + 11 distractores; procedencia y licencia declaradas"
+    },
+    {
+      "gate": "G03_CARGA_AUTOMATICA",
+      "status": "PASS",
+      "detail": "despliegue, carga, import y ejecución automatizados"
+    },
+    {
+      "gate": "G04_NOTEBOOK",
+      "status": "PASS",
+      "detail": "notebook único con ruta administrada, benchmark, evaluación y salida"
+    },
+    {
+      "gate": "G05_GOLD_SET",
+      "status": "PASS",
+      "detail": "70 preguntas admitidas; 0 rechazos por evidencia o anti-eco"
+    },
+    {
+      "gate": "G06_BENCHMARK",
+      "status": "PASS",
+      "detail": "1.405 chunks; dense=36/70 BM25=53/70 RRF=51/70"
+    },
+    {
+      "gate": "G07_RERANKER",
+      "status": "PASS",
+      "detail": "listwise 34/37 + 24/33 = 58/70, con procedencia de corrida"
+    },
+    {
+      "gate": "G08_OPERACION_DOCENTE",
+      "status": "PASS",
+      "detail": "deck y guías con orden, tiempos, outputs y resolución de fallos"
+    },
+    {
+      "gate": "G09_DATABRICKS_E2E",
+      "status": "PASS",
+      "detail": "Databricks SUCCESS run_id=148807986461078 y Volume con 24 PDF"
+    },
+    {
+      "gate": "G10_HANDOFF",
+      "status": "PASS",
+      "detail": "handoff de Daniel autocontenido y condicionado a 10/10 PASS"
+    }
+  ]
+}

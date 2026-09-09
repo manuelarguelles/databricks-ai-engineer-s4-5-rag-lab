@@ -1,0 +1,451 @@
+# Gold set — preguntas con su evidencia literal.
+#
+# Cada entrada declara el `span`: el texto del documento que responde la pregunta. El gate
+# (`scripts/validar_gold_set.py`) lo verifica con `Documento.verificar()` y rellena
+# `char_start`, `char_end` y `pagina`. Lo que no verifica, no entra.
+#
+# Escritas leyendo PASAJES del documento, nunca chunks: una pregunta redactada mirando un
+# chunk hereda las fronteras del chunker y termina midiendo al chunker.
+#
+# ⚠️ Generadas con Opus 5, que NO es el modelo evaluado (Nova / Claude en Bedrock). Eso
+# atenúa el sobreajuste modelo-a-sí-mismo pero no el sesgo de pregunta-escrita-desde-el-span:
+# para eso está el gate anti-eco, que rechaza la pregunta que repite su propia evidencia.
+
+version: 1
+generador: opus-5
+fecha: 2026-08-16
+
+preguntas:
+
+  # ── 00 · Signal or Noise? LLMs en cribado de currículums ────────────────────────────
+  - id: q-00-01
+    doc_id: "00"
+    tipo: comparativa
+    pregunta: "¿Cómo adaptan los reclutadores humanos sus criterios según el tipo de empresa, y de dónde tienen que inferir esa preferencia los modelos de lenguaje?"
+    span: "large corporations may prioritize formal credentials, while startups may value adaptability and innovation"
+
+  - id: q-00-02
+    doc_id: "00"
+    tipo: metodologica
+    pregunta: "¿Cuántos objetivos se plantea el estudio y cuál es el primero?"
+    span: "Our objectives are fourfold: first, to determine whether LLMs exhibit significant differences in scoring across contexts"
+
+  - id: q-00-03
+    doc_id: "00"
+    tipo: metodologica
+    pregunta: "¿Qué se hizo para que la variación entre evaluaciones no viniera de cómo se presentó la tarea?"
+    span: "All LLM evaluations were conducted using identical prompt formats and input materials to minimize variation due to differences in task presentation"
+
+  - id: q-00-04
+    doc_id: "00"
+    tipo: factual
+    pregunta: "¿Qué recaudos éticos se tomaron con los currículums y con los expertos humanos que participaron?"
+    span: "All resume materials were thoroughly anonymized to protect candidate privacy while preserving relevant professional information"
+
+  - id: q-00-05
+    doc_id: "00"
+    tipo: factual
+    pregunta: "¿Qué recomienda el estudio que hagan las organizaciones con las descripciones de puesto y con la supervisión humana?"
+    span: "Organizations should standardize job descriptions to enhance LLM reliability and retain human oversight for complex evaluations"
+
+  - id: q-00-06
+    doc_id: "00"
+    tipo: factual
+    pregunta: "¿A qué teoría contribuye el estudio y de qué manera?"
+    span: "The study advances Signal Detection Theory by linking decision-making reliability to information quality"
+
+  # ── 02 · Ética del reclutamiento habilitado por IA ──────────────────────────────────
+  - id: q-02-01
+    doc_id: "02"
+    tipo: comparativa
+    pregunta: "¿Por qué un error de un sistema algorítmico pesa distinto en una plataforma de streaming que en un proceso de selección?"
+    span: "when AI decisions are incorporated into hiring processes, applicants cannot reject them, and inaccuracies become problematic"
+
+  - id: q-02-02
+    doc_id: "02"
+    tipo: metodologica
+    pregunta: "¿En cuántas formas dice el artículo que contribuye a la literatura?"
+    span: "Our paper contributes to the literature in three ways"
+
+  - id: q-02-03
+    doc_id: "02"
+    tipo: metodologica
+    pregunta: "¿Qué distinción hacen los autores al mapear las consideraciones éticas?"
+    span: "we distinguish between aspects that are, on the one hand, clearly characterized as morally good and thus as ethical opportunities"
+
+  - id: q-02-04
+    doc_id: "02"
+    tipo: factual
+    pregunta: "¿Cuándo entró en vigor el GDPR y cómo lo caracteriza el artículo respecto de otras regulaciones?"
+    span: "which came into effect in May 2018, is one of the strictest"
+
+  - id: q-02-05
+    doc_id: "02"
+    tipo: factual
+    pregunta: "¿Encontró la revisión algún artículo que analizara el reclutamiento con IA desde una teoría ética establecida?"
+    span: "we did not find any article that provided a normative ethical analysis of AI recruiting by linking it to an established ethical lens"
+
+  - id: q-02-06
+    doc_id: "02"
+    tipo: factual
+    pregunta: "¿Desde qué perspectivas se aborda el tema en la literatura revisada?"
+    span: "The topic is addressed from theoretical, practitioner, legal, technical and descriptive perspectives"
+
+  # ── 03 · Contratación con LLMs: multiagente y RAG ───────────────────────────────────
+  - id: q-03-01
+    doc_id: "03"
+    tipo: factual
+    pregunta: "¿Qué permite ajustar dinámicamente a los reclutadores la integración de RAG en el sistema?"
+    span: "By integrating RAG, our system allows recruiters to dy"
+
+  - id: q-03-02
+    doc_id: "03"
+    tipo: factual
+    pregunta: "¿Cuál es la responsabilidad del agente evaluador dentro del marco multiagente?"
+    span: "Resume evaluator, which assigns scores based on predefined criteria while integrating external knowledge via RAG"
+
+  - id: q-03-03
+    doc_id: "03"
+    tipo: factual
+    pregunta: "¿Qué evalúa cada uno de los tres sub-agentes del resumidor?"
+    span: "The CEO agent assesses leadership potential, the CTO agent evaluates technical expertise, and the HR agent focuses on soft skills and cultural fit"
+
+  - id: q-03-04
+    doc_id: "03"
+    tipo: metodologica
+    pregunta: "¿Qué mide la correlación de Spearman en la evaluación del sistema, y en qué se diferencia de la de Pearson?"
+    span: "it captures non-linear relationships by ranking the scores be"
+
+  - id: q-03-05
+    doc_id: "03"
+    tipo: comparativa
+    pregunta: "¿Qué reciben los reclutadores en un enfoque de modelo único frente al enfoque modular propuesto?"
+    span: "Unlike single model approaches, where recruiters receive only a final score without insight into the reasoning process"
+
+  - id: q-03-06
+    doc_id: "03"
+    tipo: factual
+    pregunta: "¿Puede el sistema adaptarse a criterios de puntuación propios de una empresa sin reentrenar el modelo?"
+    span: "the system can assess resumes against company-specific scoring criteria in a context-aware and tailored manner without requiring model retraining"
+
+  # ── 05 · Smart-Hiring: pipeline explicable de CV a puesto ───────────────────────────
+  - id: q-05-01
+    doc_id: "05"
+    tipo: factual
+    pregunta: "¿Qué problemas introduce el cribado manual de currículums además del tiempo que consume?"
+    span: "This manual screening not only demands significant effort and time but also introduces inconsistencies and biases in candidate selection"
+
+  - id: q-05-02
+    doc_id: "05"
+    tipo: metodologica
+    pregunta: "¿Sobre qué tamaño de conjunto de datos se evaluó el sistema?"
+    span: "a real-world dataset containing more than a thousand of resumes and hundreds of job descriptions spanning multiple professional domains"
+
+  - id: q-05-03
+    doc_id: "05"
+    tipo: metodologica
+    pregunta: "¿Qué pasos de normalización aplica el sistema después de extraer el texto?"
+    span: "This includes removing unwanted symbols, correcting accented or malformed characters, standardizing whitespace and punctuation"
+
+  - id: q-05-04
+    doc_id: "05"
+    tipo: metodologica
+    pregunta: "¿Cómo se determinan los pesos de cada criterio de emparejamiento?"
+    span: "Attribute weights are empirically determined based on domain expertise"
+
+  - id: q-05-05
+    doc_id: "05"
+    tipo: comparativa
+    pregunta: "¿Qué ofrece Smart-Hiring que los sistemas que sólo calculan similitud de embeddings no dan?"
+    span: "Smart-Hiring provides explicit reasoning behind its recommendations by highlighting matched skills and experience"
+
+  - id: q-05-06
+    doc_id: "05"
+    tipo: factual
+    pregunta: "¿Qué aporta la capa de explicabilidad del sistema según las conclusiones?"
+    span: "highlighting key factors driving candidate ranking decisions"
+
+  # ── 08 · Agente LLM para cribado automatizado de currículums ────────────────────────
+  - id: q-08-01
+    doc_id: "08"
+    tipo: metodologica
+    pregunta: "¿Contra qué se comparó el desempeño de los modelos de lenguaje en el experimento?"
+    span: "The performance of the LLMs was benchmarked against this manually labeled dataset"
+
+  - id: q-08-02
+    doc_id: "08"
+    tipo: metodologica
+    pregunta: "¿Cómo se unifican currículums que llegan en formatos distintos antes de procesarlos?"
+    span: "This is achieved through a rule-based algorithm designed to standardize the diverse formatting and file types into coherent, individual sentences"
+
+  - id: q-08-03
+    doc_id: "08"
+    tipo: factual
+    pregunta: "¿Por qué introducir una oración en el modelo no garantiza que devuelva la etiqueta esperada?"
+    span: "the underlying reason for this is the model's design to respond according to the instruction dataset's guidelines"
+
+  - id: q-08-04
+    doc_id: "08"
+    tipo: factual
+    pregunta: "¿En cuántos procesos se divide la fase final de evaluación de candidatos?"
+    span: "we have bifurcated this stage into two distinct pro"
+
+  - id: q-08-05
+    doc_id: "08"
+    tipo: comparativa
+    pregunta: "¿En qué aspecto supera significativamente el agente al cribado manual tradicional?"
+    span: "in terms of time efficiency, the LLM agent significantly surpasses traditional manual screening methods"
+
+  # ── 17 · RAGAS: evaluación automática y sin referencia de sistemas RAG ──────────────
+  - id: q-17-01
+    doc_id: "17"
+    tipo: factual
+    pregunta: "¿Con qué dos frameworks de construcción de sistemas RAG se integra la herramienta?"
+    span: "The RAGAS framework provides an integration with both llama"
+
+  - id: q-17-02
+    doc_id: "17"
+    tipo: factual
+    pregunta: "¿La métrica de relevancia de la respuesta tiene en cuenta si la respuesta es verdadera?"
+    span: "our assessment of answer relevance does not take into account fac"
+
+  - id: q-17-03
+    doc_id: "17"
+    tipo: factual
+    pregunta: "¿Qué penaliza específicamente la métrica de relevancia del contexto?"
+    span: "this metric aims to penalise the inclusion of redundant information"
+
+  - id: q-17-04
+    doc_id: "17"
+    tipo: metodologica
+    pregunta: "¿Por qué dos corridas del mismo experimento con la misma configuración pueden dar resultados distintos?"
+    span: "because of an undocumented change in the underlying API, or because of the inherent randomness in neural networks"
+
+  - id: q-17-05
+    doc_id: "17"
+    tipo: factual
+    pregunta: "¿Qué proveedor usan por defecto las métricas de la biblioteca?"
+    span: "The metrics available at ragas.metrics use OpenAI's API by default"
+
+  - id: q-17-06
+    doc_id: "17"
+    tipo: factual
+    pregunta: "¿Qué tipo de modelos recomiendan priorizar los autores al elegir el evaluador?"
+    span: "open models over full-fledged products behind paid APIs"
+
+  # ── 19 · ARES: marco automatizado de evaluación para RAG ────────────────────────────
+  - id: q-19-01
+    doc_id: "19"
+    tipo: metodologica
+    pregunta: "¿Cuándo se deja de entrenar a los jueces del sistema?"
+    span: "stopping when we have three epochs with no improvement in loss"
+
+  - id: q-19-02
+    doc_id: "19"
+    tipo: metodologica
+    pregunta: "¿Para qué usa el método el conjunto de validación de preferencias humanas?"
+    span: "PPI uses the LLM judges on the hu"
+
+  - id: q-19-03
+    doc_id: "19"
+    tipo: factual
+    pregunta: "¿Sobre qué se entrenan los jueces ligeros que propone el marco?"
+    span: "ARES offers a novel training pipeline for fine-tuning lightweight LLM judges on synthetically generated queries and answers"
+
+  - id: q-19-04
+    doc_id: "19"
+    tipo: factual
+    pregunta: "¿Qué ventaja da poder evaluar cada componente por separado?"
+    span: "ARES can evaluate each component of a RAG sys"
+
+  # ── 20 · RAG frente a modelos de contexto largo ─────────────────────────────────────
+  - id: q-20-01
+    doc_id: "20"
+    tipo: comparativa
+    pregunta: "¿Qué función conceptual cumple la recuperación respecto de la atención del modelo?"
+    span: "RAG conceptually acts as a prior, regularizing the attention of LLMs onto retrieved segments"
+
+  - id: q-20-02
+    doc_id: "20"
+    tipo: factual
+    pregunta: "¿En qué supuesto se apoya el método que enruta consultas por auto-reflexión?"
+    span: "under the assumption that LLMs are well-calibrated in predicting whether a query is answerable given provided context"
+
+  - id: q-20-03
+    doc_id: "20"
+    tipo: metodologica
+    pregunta: "¿Cómo determinaron los autores las razones por las que fallaba la recuperación?"
+    span: "We first manually check some examples for which our RAG-and-Route step predicts"
+
+  - id: q-20-04
+    doc_id: "20"
+    tipo: factual
+    pregunta: "¿Por qué una consulta que exige razonamiento en varios pasos le cuesta al recuperador?"
+    span: "The query requires multi-step reasoning so the results of previous steps are needed to retrieve information for later steps"
+
+  - id: q-20-05
+    doc_id: "20"
+    tipo: comparativa
+    pregunta: "¿Cuándo sigue siendo preferible la recuperación aunque el contexto largo rinda mejor?"
+    span: "RAG remains a viable option due to its lower cost and advantages when the input considerably exceeds the model's context window size"
+
+  - id: q-20-06
+    doc_id: "20"
+    tipo: factual
+    pregunta: "¿Qué se le indica al modelo que responda cuando la pregunta no se puede contestar con los pasajes?"
+    span: "If the question cannot be answered based on the information in the article, write"
+
+  # ── 22 · Estudio de correlación de métricas de evaluación RAG ───────────────────────
+  - id: q-22-01
+    doc_id: "22"
+    tipo: metodologica
+    pregunta: "¿Qué se obtiene al comparar los fragmentos recuperados contra los de referencia?"
+    span: "comparing retrieved spans with reference spans produces a retriever perfor"
+
+  - id: q-22-02
+    doc_id: "22"
+    tipo: metodologica
+    pregunta: "¿Cómo se define la exhaustividad en este estudio y por qué se eligió esa métrica?"
+    span: "Recall is defined as the proportion of relevant elements actually present in the top k spans returned by the retriever"
+
+  - id: q-22-03
+    doc_id: "22"
+    tipo: factual
+    pregunta: "¿Para qué sirven principalmente las métricas de generación según los autores?"
+    span: "The primary purpose of these metrics is to study certain generator behaviors and not its performance in the strict sense"
+
+  - id: q-22-04
+    doc_id: "22"
+    tipo: comparativa
+    pregunta: "¿Por qué que una métrica correlacione bien con el juicio humano no alcanza para confiar en ella?"
+    span: "observing that a given metric correlates well with human judgment is not sufficient to affirm that it measures what we want it to measure"
+
+  - id: q-22-05
+    doc_id: "22"
+    tipo: factual
+    pregunta: "¿Qué riesgo hay en incorporar demasiados sistemas al estudio de correlación?"
+    span: "integrating too many systems risks making the annotation task costly"
+
+  # ── 24 · Sesgo interseccional en el cribado con modelos de lenguaje ─────────────────
+  - id: q-24-01
+    doc_id: "24"
+    tipo: factual
+    pregunta: "¿Cuánto puede aumentar la cantidad de resultados sesgados al acortar un documento?"
+    span: "can increase the number of biased outcomes by 22.2%"
+
+  - id: q-24-02
+    doc_id: "24"
+    tipo: metodologica
+    pregunta: "¿Por qué es difícil reproducir investigación que usa descripciones de puesto tomadas de la web?"
+    span: "they are frequently removed or altered as positions fill or re"
+
+  - id: q-24-03
+    doc_id: "24"
+    tipo: metodologica
+    pregunta: "¿Qué prueba estadística se usa para decidir si un grupo está sobrerrepresentado en la selección?"
+    span: "A chi-square test is used to determine whether the selected resumes are distributed uniformly amongst rel"
+
+  - id: q-24-04
+    doc_id: "24"
+    tipo: metodologica
+    pregunta: "¿Qué se comparó para confirmar que el enfoque de recuperación servía para el cribado?"
+    span: "The cosine similarity scores of these two groups were compared to verify that the document retrieval approach is suitable for resume screening"
+
+  - id: q-24-05
+    doc_id: "24"
+    tipo: factual
+    pregunta: "¿A qué grupos de raza y género se limitó el análisis?"
+    span: "This study was limited to analyzing only two of the most commonly studied race"
+
+  - id: q-24-06
+    doc_id: "24"
+    tipo: factual
+    pregunta: "¿Qué tensión deben resolver quienes investigan sobre documentos con señales de identidad?"
+    span: "Researchers interested in trans"
+
+  # ── 25 · Auditoría de correspondencia sobre brechas de respuesta ────────────────────
+  - id: q-25-01
+    doc_id: "25"
+    tipo: metodologica
+    pregunta: "¿Cómo se calcularon los intervalos de confianza de la brecha por raza y sobre cuántos conglomerados?"
+    span: "cluster-bootstrap 95% confidence intervals (2,000 replications over 6,006 posting clusters)"
+
+  - id: q-25-02
+    doc_id: "25"
+    tipo: metodologica
+    pregunta: "¿Cuántos pares de currículums por modelo se usaron en la auditoría de género?"
+    span: "a paired correspondence audit with 48,048 Male-Female resume pairs per model"
+
+  # ── 27 · Revisión sistemática de discriminación algorítmica en RR.HH. ──────────────
+  - id: q-27-01
+    doc_id: "27"
+    tipo: factual
+    pregunta: "¿Cuál es el vacío de investigación principal que identifica la revisión?"
+    span: "we identify several research gaps, mainly a lacking focus on perceived fairness"
+
+  - id: q-27-02
+    doc_id: "27"
+    tipo: factual
+    pregunta: "¿Qué se busca descubrir con el perfilado de datos y qué le aporta a la empresa?"
+    span: "It aims to discover the meaningful features of data sets"
+
+  - id: q-27-03
+    doc_id: "27"
+    tipo: factual
+    pregunta: "¿Qué ejemplo dan de una variable que predice permanencia pero discrimina si se usa para contratar?"
+    span: "the distance between the workplace and home is a strong predictor of job tenure"
+
+  - id: q-27-04
+    doc_id: "27"
+    tipo: comparativa
+    pregunta: "¿Qué aspecto de la decisión algorítmica recibió poca atención frente a sus ventajas organizativas?"
+    span: "the possible downsides in terms of biases, discrimination, and perceived unfairness have found little attention in HRM"
+
+  - id: q-27-05
+    doc_id: "27"
+    tipo: factual
+    pregunta: "¿Por qué los sesgos implícitos resultan más problemáticos que los evidentes?"
+    span: "implicit discrimination of less apparent personal characteristics might be more problematic, because such implicit biases are more difficult to detect"
+
+  - id: q-27-06
+    doc_id: "27"
+    tipo: factual
+    pregunta: "¿Qué recomiendan los autores respecto de delegar la decisión enteramente en el algoritmo?"
+    span: "companies should not solely rely on the information provided by algorithms or even implement automatic decision-making without any control"
+
+  # ── 35 · Ataques adversariales sobre cribado con LLMs ───────────────────────────────
+  - id: q-35-01
+    doc_id: "35"
+    tipo: metodologica
+    pregunta: "¿Cómo se formaliza la tarea de emparejamiento entre puesto y candidatos?"
+    span: "given a job description J specifying required skills, experience, and qualifications"
+
+  - id: q-35-02
+    doc_id: "35"
+    tipo: factual
+    pregunta: "¿Qué ventaja tiene el enfoque entre dominios para entrenar la defensa?"
+    span: "without requiring extensive collection of domain-specific adversarial data"
+
+  - id: q-35-03
+    doc_id: "35"
+    tipo: factual
+    pregunta: "¿Cuál es la primera medida del esquema de defensa en profundidad que proponen?"
+    span: "normalize resumes to plain text, strip or neutralize HTML/CSS, remove zero-size or off-screen content"
+
+  - id: q-35-04
+    doc_id: "35"
+    tipo: factual
+    pregunta: "¿Cómo debe separarse la instrucción de tarea de los datos del candidato?"
+    span: "enforce strict channel separation between task instructions (job requirements) and candidate data using explicit delimiters and schemas"
+
+  - id: q-35-05
+    doc_id: "35"
+    tipo: comparativa
+    pregunta: "¿En qué se diferencian estos ataques de un jailbreak clásico?"
+    span: "Unlike jailbreaks that bypass safety guardrails to generate prohibited content, our attacks corrupt the reasoning process"
+
+  - id: q-35-06
+    doc_id: "35"
+    tipo: factual
+    pregunta: "¿Qué factores deben considerarse secundarios salvo que el aviso diga lo contrario?"
+    span: "Consider education and location as secondary factors unless the job description explicitly states they are critical"

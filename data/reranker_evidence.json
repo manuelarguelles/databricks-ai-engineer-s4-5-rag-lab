@@ -1,0 +1,37 @@
+{
+  "corpus_version": "s4.5-24docs-2026-08-26",
+  "validated_at": "2026-09-09",
+  "model": "us.amazon.nova-2-lite-v1:0",
+  "candidate_count": 20,
+  "output_k": 8,
+  "partition": {
+    "method": "sha256(question_id) mod 2",
+    "calibration_questions": 37,
+    "validation_questions": 33
+  },
+  "calibration": {
+    "hits": 34,
+    "questions": 37
+  },
+  "validation": {
+    "hits": 24,
+    "questions": 33
+  },
+  "total": {
+    "hits": 58,
+    "questions": 70
+  },
+  "validation_usage": {
+    "calls": 33,
+    "input_tokens": 164847,
+    "output_tokens": 2235,
+    "failures": 0,
+    "mean_latency_seconds": 1.64
+  },
+  "provenance": {
+    "source_repository": "manuelarguelles/agente-research-citas",
+    "source_commit": "f22f8565b008d318c85cc68b2df3955c4a23742f",
+    "validation_command": "python scripts/evaluar_reranker.py --fase validacion --candidato listwise",
+    "note": "Calibracion 34/37 confirmada por la corrida ambas; validacion 24/33 reejecutada el 2026-09-09. El laboratorio consume esta medicion versionada y no la presenta como una inferencia determinista nueva."
+  }
+}

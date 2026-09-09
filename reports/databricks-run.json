@@ -1,0 +1,36 @@
+{
+  "state": "SUCCESS",
+  "run_id": 148807986461078,
+  "task_run_id": 1020316134958189,
+  "run_page_url": "https://dbc-0410b264-20c7.cloud.databricks.com/?o=7474657121564806#job/519768905811060/run/148807986461078",
+  "workspace_path": "/Shared/curso-databricks-ai-engineer/S4.5-laboratorio-rag-24-documentos",
+  "volume_uri": "dbfs:/Volumes/neptuno_manuel_arguelles/rag_s4_5/laboratorio",
+  "volume_pdf_count": 24,
+  "notebook_summary": {
+    "status": "PASS",
+    "namespace": "neptuno_manuel_arguelles.rag_s4_5",
+    "volume": "/Volumes/neptuno_manuel_arguelles/rag_s4_5/laboratorio",
+    "pdfs": 24,
+    "documents": 24,
+    "base_documents": 13,
+    "distractor_documents": 11,
+    "managed_route_ok": true,
+    "managed_attempted_documents": 24,
+    "managed_primary_documents": 23,
+    "managed_fallback_documents": 1,
+    "managed_fallback_sources": [
+      "dbfs:/Volumes/neptuno_manuel_arguelles/rag_s4_5/laboratorio/corpus/pdf/37_explainable-use-of-foundation-models-for-job-hiring.pdf"
+    ],
+    "managed_chunks": 597,
+    "benchmark_chunks": 1405,
+    "questions": 70,
+    "hits": {
+      "dense": 36,
+      "bm25": 53,
+      "rrf": 51,
+      "rrf_listwise": 58
+    },
+    "extractor": "pymupdf-bloques@1.27.2.3",
+    "embedding_model": "cohere.embed-multilingual-v3"
+  }
+}
