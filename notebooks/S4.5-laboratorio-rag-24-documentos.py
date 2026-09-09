@@ -339,7 +339,7 @@ spark.sql(
 assert df_docs.filter("grupo = 'base'").count() == 13
 assert df_docs.filter("grupo = 'distractor'").count() == 11
 assert df_chunks.count() == 1405
-print("✅ Delta+C​​DF: 13 base + 11 distractores · 1.405 chunks con vector congelado")
+print("✅ Delta + CDF: 13 base + 11 distractores · 1.405 chunks con vector congelado")
 
 # COMMAND ----------
 
