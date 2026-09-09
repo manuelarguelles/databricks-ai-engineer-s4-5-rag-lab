@@ -35,6 +35,11 @@ Al terminar, el alumno puede:
 - `scripts/validate_package.py`: verifica los diez gates de aceptación.
 - `GUIA-ALUMNO.md`, `GUIA-INSTRUCTOR.md` y `HANDOFF-DANIEL.md`.
 
+Los 24 PDF están versionados como archivos completos dentro de `corpus/pdf/`; el consumidor no
+necesita descargarlos de Internet. Sus hashes y fuentes se verifican antes de ejecutar el pipeline.
+La licencia del código no modifica los derechos de los documentos académicos de terceros; consulta
+`THIRD-PARTY-NOTICES.md`.
+
 ## Dos rutas, sin mezclar métricas
 
 | Ruta | Propósito | Unidad comparable |
@@ -79,3 +84,8 @@ Valores por defecto del despliegue:
 El laboratorio solo está terminado cuando `reports/acceptance.json` marca los diez gates como
 `PASS` y `reports/databricks-run.json` contiene una corrida `SUCCESS` con 24 documentos,
 1.405 chunks de benchmark y 70 preguntas admitidas. Consulta `CRITERIOS-ACEPTACION.md`.
+
+## Licencia
+
+Código y material original: MIT. Los PDF y demás obras de terceros quedan excluidos de esa
+licencia y conservan sus términos originales.

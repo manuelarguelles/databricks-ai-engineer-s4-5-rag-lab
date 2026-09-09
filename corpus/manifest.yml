@@ -1,8 +1,7 @@
 version: 1
 procedencia:
-  origen: notion
-  pagina: Tesis de selección asistida · Terry & Valdez
-  page_id: 3ba63102-b2a3-817b-878d-ea851a301a2b
+  origen: fuentes-publicas-academicas
+  pagina: corpus reproducible del laboratorio S4.5
   extraido: 2026-08-15
 fuentes:
 - id: '00'

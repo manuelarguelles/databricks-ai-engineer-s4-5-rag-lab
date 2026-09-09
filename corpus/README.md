@@ -15,13 +15,13 @@ compiten semánticamente con el corpus base y por eso constituyen una prueba má
 URL/DOI, nombre de archivo y SHA-256. Un archivo que no coincida con su hash no entra al pipeline.
 
 Los PDF se obtuvieron de fuentes de acceso abierto o copias públicamente accesibles registradas en
-el manifiesto original del proyecto de investigación. Este repositorio es **privado y de uso
-docente**. Antes de convertirlo en público hay que revisar la licencia de distribución de cada
-documento; una URL públicamente accesible no equivale automáticamente a permiso de redistribución.
+el manifiesto. Están descargados dentro del repositorio para que el pipeline pueda consumirlos sin
+una etapa de adquisición previa. Los autores y editores conservan los derechos de cada paper; la
+licencia MIT del repositorio solo cubre el código y material original del laboratorio. Consulta
+`THIRD-PARTY-NOTICES.md` antes de reutilizar o redistribuir el corpus fuera de este ejercicio.
 
 ## Por qué el gold set cubre solo 13 documentos
 
 Las 70 preguntas se etiquetaron manualmente antes de ampliar el corpus. Los 11 documentos nuevos
 solo pueden restar aciertos en esta medición: actúan como distractores. Por eso la caída observada
 es un techo del daño, no una estimación equilibrada del valor de los documentos nuevos.
-
